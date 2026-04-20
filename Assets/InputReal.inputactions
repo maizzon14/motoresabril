@@ -1,0 +1,34 @@
+{
+    "name": "InputReal",
+    "maps": [
+        {
+            "name": "Main",
+            "id": "3ec75b25-c46c-4719-a8de-90080aa94fbc",
+            "actions": [
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "cda7e35f-9cc5-4999-9dbc-58d4b1f503e1",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "8a54ffef-fb4b-42fc-8ae9-53c6a975c7c1",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
