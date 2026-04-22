@@ -8,6 +8,8 @@ public class EnemyController : MonoBehaviour
     NavMeshAgent agent;
 
     [SerializeField] GameObject target;
+
+    float curHealth;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -29,5 +31,14 @@ public class EnemyController : MonoBehaviour
     void Move()
     {
         agent.destination = target.transform.position;
+    }
+
+    public void GetDamaged(float amount)
+    {
+        curHealth -= amount;
+        if(curHealth <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
