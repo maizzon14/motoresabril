@@ -10,9 +10,12 @@ public class EnemyController : MonoBehaviour
     [SerializeField] GameObject target;
 
     float curHealth;
+
+    [SerializeField] EnemyData enemyData;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        curHealth = enemyData.GetMaxHealth();
     }
 
     public void SetTarget(GameObject newTarget)

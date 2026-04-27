@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60385b8703486ef41b697a1b0261fabb, type: 3}
   m_Name: GunData
   m_EditorClassIdentifier: 
-  damage: 0
-  range: 0
-  maxAmo: 0
+  damage: 20
+  range: 20
+  maxAmo: 5
   reloadTime: 0
   fireRate: 0
