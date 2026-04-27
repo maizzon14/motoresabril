@@ -12,6 +12,13 @@ public class PlayerController : MonoBehaviour
     InputReal input;
     InputAction m_interactAction;
 
+    InputAction[] m_switchWeaponActions = new InputAction[3];
+
+    [SerializeField] GameObject[] Weapons = new GameObject[3];
+    Iweapon currentWeapon;
+
+    int currentWeaponNumber;
+
     Vector3 MousePosition = new Vector3();
 
     public enum TargetType
@@ -44,6 +51,27 @@ public class PlayerController : MonoBehaviour
         input = new InputReal();
         input.Main.Enable();
         m_interactAction = input.Main.Interact;
+
+        m_switchWeaponActions = new InputAction[3] { input.Main.Weapon1, input.Main.Weapon2, input.Main.Weapon3 };
+    }
+
+    void Start()
+    {
+        for(int i = 0;  i < Weapons.Length; i++)
+        {
+            if(i == 0)
+            {
+                currentWeapon = Weapons[i].GetComponent<Iweapon>();
+                currentWeaponNumber = i;
+            }
+            else
+            {
+                Weapons[i].SetActive(false);
+            }
+        }
+
+
+
     }
 
     void Update()
@@ -58,17 +86,32 @@ public class PlayerController : MonoBehaviour
             case TargetType.enemy:
                 agent.destination = target.Hit.transform.position;
                 float distance = Vector3.Distance(transform.position, agent.destination);
-                if (distance <= AttackRange & canShoot)
+                if (distance <= currentWeapon.GetRange())
                 {
-                    canShoot = false;
                     agent.isStopped = true;
                     transform.LookAt(agent.destination);
-                    Shoot();
+                    currentWeapon.Shoot(target.Hit.transform.GetComponent<EnemyController>());
                 }
                 break;
             case TargetType.position:
             default:
                 break;
+        }
+
+        for(int i = 0; i < m_switchWeaponActions.Length; i++)
+        {
+            if (m_switchWeaponActions[i].WasPressedThisFrame())
+            {
+                if (Weapons[i] & currentWeapon != Weapons[i].GetComponent<Iweapon>())
+                {
+                    Weapons[currentWeaponNumber].SetActive(false);
+                    Weapons[i].SetActive(true);
+                    currentWeapon = Weapons[i].GetComponent<Iweapon>();
+                    currentWeapon.SwitchWeapon();
+                    currentWeaponNumber = i;
+                    break;
+                }
+            }
         }
     }
 
@@ -106,21 +149,21 @@ public class PlayerController : MonoBehaviour
             Gizmos.DrawWireSphere(agent.destination, 0.5f);
         }
 
-        Gizmos.color = new Color(1f, 0f, 0f, 1f);
-        Gizmos.DrawWireSphere(transform.position, 5f);
+        Gizmos.color = Color.red;
+        if(currentWeapon != null) Gizmos.DrawWireSphere(transform.position, currentWeapon.GetRange());
     }
     
-    void Shoot()
+    /*void Shoot()
     {
         canShoot = false;
         Debug.Log("Bang");
         Debug.DrawLine(transform.position, target.Hit.transform.position,
             Color.yellow, 0.1f);
         StartCoroutine(ShootCooldown());
-    }
-    IEnumerator ShootCooldown()
+    }*/ 
+    /*IEnumerator ShootCooldown()
     {
         yield return new WaitForSeconds(Cooldown);
         canShoot = true;
-    }
+    }*/
 }

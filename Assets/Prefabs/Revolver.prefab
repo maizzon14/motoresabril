@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 6a23d0edf27a45e439deef3a0ac6b8ba, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 4844019998183697019}
   - component: {fileID: 5235445348528144359}
   m_Layer: 0
-  m_Name: Gun
+  m_Name: Revolver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -176,7 +176,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 6a23d0edf27a45e439deef3a0ac6b8ba, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 429158c893f9e9d499ad55d54d9cb559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunData: {fileID: 11400000, guid: e2c4e5556525cdf44afd276be4576b38, type: 2}
+  gunData: {fileID: 11400000, guid: 099b62fb7e76c1841bdb44e228e194ea, type: 2}
   user: {fileID: 0}
   barrel: {fileID: 6931025183902773285}
 --- !u!1 &8764475519957098573
@@ -259,7 +259,7 @@ Transform:
   m_GameObject: {fileID: 8764475519957098573}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.518, y: -0, z: -0}
+  m_LocalPosition: {x: -0.518, y: 0, z: 0}
   m_LocalScale: {x: 1.8366203, y: 7.0085425, z: 7.0085425}
   m_ConstrainProportionsScale: 0
   m_Children: []

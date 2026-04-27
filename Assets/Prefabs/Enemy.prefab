@@ -147,3 +147,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  enemyData: {fileID: 11400000, guid: b0548f4473bc65141ad76efba7295bae, type: 2}
