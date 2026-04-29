@@ -84,6 +84,11 @@ public class PlayerController : MonoBehaviour
         switch(target.Type)
         {
             case TargetType.enemy:
+                if (target.Hit.transform == null)
+                {
+                    target = new Target(TargetType.none, new RaycastHit());
+                    return;
+                }
                 agent.destination = target.Hit.transform.position;
                 float distance = Vector3.Distance(transform.position, agent.destination);
                 if (distance <= currentWeapon.GetRange())
