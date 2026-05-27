@@ -4,17 +4,29 @@ using UnityEngine;
 public class WeaponController : MonoBehaviour, Iweapon
 {
     [SerializeField] GunData gunData;
-
+    [SerializeField] TrailData trail;
     [SerializeField] GameObject user;
     [SerializeField] Transform barrel;
 
+    float Damage;
+    float ReloadTime;
+    float Range;
+    float FireRating;
+
+    int MaxAmo;
     int curAmo;
 
     bool canShoot = true;
 
     void Awake()
     {
-        curAmo = gunData.maxAmo;
+        Damage = gunData.damage;
+        ReloadTime = gunData.reloadTime;
+        Range = gunData.range;
+        FireRating = gunData.fireRate;
+        MaxAmo = gunData.maxAmo;
+        
+        curAmo = MaxAmo;
     }
 
     public void Shoot(EnemyController target)
@@ -29,19 +41,21 @@ public class WeaponController : MonoBehaviour, Iweapon
         Vector3 direction = user.transform.forward;
         Vector3 endPoint;
 
-        if(Physics.Raycast(origin, direction, out hit, gunData.range))
+        if(Physics.Raycast(origin, direction, out hit, Range))
         {
             endPoint = hit.point;
 
             if(hit.transform.GetComponent<EnemyController>())
             {
-                hit.transform.GetComponent<EnemyController>().GetDamaged(gunData.damage);
+                hit.transform.GetComponent<EnemyController>().GetDamaged(Damage);
             }
         }
         else
         {
-            endPoint = origin + direction * gunData.range;
+            endPoint = origin + direction * Range;
         }
+
+        StartCoroutine(trail.PlayTrail(origin, endPoint));
 
         --curAmo;
 
@@ -53,24 +67,27 @@ public class WeaponController : MonoBehaviour, Iweapon
 
     public void Reload() 
     {
-        canShoot = false;
         StartCoroutine(Reloading());
     }
-    public float GetRange() { return gunData.range; }
-    public void SwitchWeapon() { }
+    public float GetRange() { return Range; }
+    public void SwitchWeapon() 
+    {
+        Reload();
+    }
 
     IEnumerator WaitFireRate()
     {
         canShoot = false;
-        yield return new WaitForSeconds(gunData.fireRate);
+        yield return new WaitForSeconds(FireRating);
         canShoot = true;
     }
 
     IEnumerator Reloading()
     {
         Debug.Log("Reloading...");
-        yield return new WaitForSeconds(gunData.reloadTime);
-        curAmo = gunData.maxAmo;
+        canShoot = false;
+        yield return new WaitForSeconds(ReloadTime);
+        curAmo = MaxAmo;
         canShoot = true;
         Debug.Log("Reloaded");
     }

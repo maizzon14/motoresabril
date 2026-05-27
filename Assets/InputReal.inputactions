@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "InputReal",
     "maps": [
         {
@@ -36,6 +37,15 @@
                     "name": "Weapon 3",
                     "type": "Button",
                     "id": "88a67e56-ffbf-49e6-8c41-de12e42d3bc3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Weapon 4",
+                    "type": "Button",
+                    "id": "799578da-7b47-4cb7-b945-c431f7dc8ec7",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -84,6 +94,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Weapon 3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "48c9f9f0-6c36-4836-8b83-23fc6a6beffb",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Weapon 4",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -12,9 +12,9 @@ public class PlayerController : MonoBehaviour
     InputReal input;
     InputAction m_interactAction;
 
-    InputAction[] m_switchWeaponActions = new InputAction[3];
+    InputAction[] m_switchWeaponActions = new InputAction[4];
 
-    [SerializeField] GameObject[] Weapons = new GameObject[3];
+    [SerializeField] GameObject[] Weapons = new GameObject[4];
     Iweapon currentWeapon;
 
     int currentWeaponNumber;
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
         input.Main.Enable();
         m_interactAction = input.Main.Interact;
 
-        m_switchWeaponActions = new InputAction[3] { input.Main.Weapon1, input.Main.Weapon2, input.Main.Weapon3 };
+        m_switchWeaponActions = new InputAction[4] { input.Main.Weapon1, input.Main.Weapon2, input.Main.Weapon3, input.Main.Weapon4 };
     }
 
     void Start()
@@ -90,6 +90,7 @@ public class PlayerController : MonoBehaviour
                     return;
                 }
                 agent.destination = target.Hit.transform.position;
+
                 float distance = Vector3.Distance(transform.position, agent.destination);
                 if (distance <= currentWeapon.GetRange())
                 {
@@ -105,9 +106,11 @@ public class PlayerController : MonoBehaviour
 
         for(int i = 0; i < m_switchWeaponActions.Length; i++)
         {
+            if (i >= Weapons.Length) return;
+
             if (m_switchWeaponActions[i].WasPressedThisFrame())
             {
-                if (Weapons[i] & currentWeapon != Weapons[i].GetComponent<Iweapon>())
+                if (Weapons[i] && currentWeapon != Weapons[i].GetComponent<Iweapon>())
                 {
                     Weapons[currentWeaponNumber].SetActive(false);
                     Weapons[i].SetActive(true);
@@ -137,7 +140,10 @@ public class PlayerController : MonoBehaviour
                 case "Walkable":
                     target = new Target(TargetType.position, hit);
                     break;
+                case "Interactable":
+                    break;
                 default:
+                    Debug.Log("???");
                     break;
             }
 
