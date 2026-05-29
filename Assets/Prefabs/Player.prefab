@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5958586403215288456}
   - component: {fileID: 6880019167023039164}
   - component: {fileID: 6455130547185091162}
+  - component: {fileID: 6428707680875979898}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -64,6 +65,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -85,6 +88,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -146,8 +150,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a87f74e8936591045a8f3c74408f70a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Weapons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   mask:
     serializedVersion: 2
     m_Bits: 448
   AttackRange: 5
   Cooldown: 0.5
+--- !u!114 &6428707680875979898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299630037071302183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b917fcdaa11615943809fbfc73442c61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  MaxHealth: 100
+  tryAgain: {fileID: 0}

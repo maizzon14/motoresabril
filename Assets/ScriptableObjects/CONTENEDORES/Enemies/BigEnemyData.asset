@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: BigEnemyData
   m_EditorClassIdentifier: 
   MaxHealth: 120
-  Damage: 40
+  Damage: 60
+  AttackRange: 0.5
+  AttackSpeed: 1

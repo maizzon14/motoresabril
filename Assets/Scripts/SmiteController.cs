@@ -6,12 +6,17 @@ public class SmiteController : MonoBehaviour, Iweapon
     [SerializeField] SmiteData smiteData;   // El ScripteableObject con la info del tipo de Smite
     [SerializeField] TrailData trailData;   // La info de la representación de los misiles mágicos de este tipo de Smite
 
+    [SerializeField] AudioClip shootSound;
+    [SerializeField] AudioSource audioSource;
+
     bool CanShoot = true;   // Esta variable nos servirá para controlar cuando podemos disparar o no
 
 
     public void Shoot(EnemyController target)
     {
         if (!CanShoot) return; // Si no podemos disparar terminamos la ejecución de esta llamada al método
+
+        audioSource.PlayOneShot(shootSound);
 
         /////////////////////////////////////////////////////////////////////////////////
         /// Podemos dibujar una serie de Debug.Lines para visualizar el área de daño 

@@ -261,6 +261,8 @@ MonoBehaviour:
   lineData: {fileID: 11400000, guid: da4243a8ca5d4f54c8bffa2f6cdd3028, type: 2}
   Barrel: {fileID: 3653990262065616195}
   User: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: f250d2b52412ed645b2084b0e6251198, type: 3}
+  audioSource: {fileID: 0}
 --- !u!1 &9133581112453593555
 GameObject:
   m_ObjectHideFlags: 0

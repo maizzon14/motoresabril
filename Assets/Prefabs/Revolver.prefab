@@ -241,6 +241,8 @@ MonoBehaviour:
   trail: {fileID: 11400000, guid: 57fa7457f57d02341a30339aa7528cb4, type: 2}
   user: {fileID: 0}
   barrel: {fileID: 6931025183902773285}
+  shootSound: {fileID: 8300000, guid: e561248edfcefe2419cc536cac66af94, type: 3}
+  audioSource: {fileID: 0}
 --- !u!1 &8764475519957098573
 GameObject:
   m_ObjectHideFlags: 0

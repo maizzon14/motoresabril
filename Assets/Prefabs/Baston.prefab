@@ -137,6 +137,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SmiteController
   smiteData: {fileID: 11400000, guid: 97fc8dca2d4e3c84288424aefd8b8ffa, type: 2}
   trailData: {fileID: 11400000, guid: 47fd0340ea650704198e18d949c386ec, type: 2}
+  shootSound: {fileID: 8300000, guid: 89d6c77f3bd7e9249a06f00522efba1e, type: 3}
+  audioSource: {fileID: 0}
 --- !u!1 &7407514633739360804
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 60
   Damage: 20
+  AttackRange: 1
+  AttackSpeed: 2

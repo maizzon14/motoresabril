@@ -8,6 +8,9 @@ public class WeaponController : MonoBehaviour, Iweapon
     [SerializeField] GameObject user;
     [SerializeField] Transform barrel;
 
+    [SerializeField] AudioClip shootSound;
+    [SerializeField] AudioSource audioSource;
+
     float Damage;
     float ReloadTime;
     float Range;
@@ -35,6 +38,8 @@ public class WeaponController : MonoBehaviour, Iweapon
         {
             return;
         }
+
+        audioSource.PlayOneShot(shootSound);
 
         RaycastHit hit;
         Vector3 origin = barrel.position;

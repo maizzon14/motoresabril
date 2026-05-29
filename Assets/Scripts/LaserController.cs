@@ -7,7 +7,12 @@ public class LaserController : MonoBehaviour, Iweapon
     [SerializeField] LineData lineData;    // La info de la representación del rayo de este tipo de laser
 
     [SerializeField] Transform Barrel;     // Posición desde la que dispararemos el laser
-    [SerializeField] GameObject User;      // El GameObject que usa el arma, en nuestro caso el Player
+    [SerializeField] GameObject User;
+
+    [SerializeField] AudioClip shootSound;
+    [SerializeField] AudioSource audioSource;
+
+    // El GameObject que usa el arma, en nuestro caso el Player
 
     /// La info basica del arma
     int Damage;
@@ -108,6 +113,8 @@ public class LaserController : MonoBehaviour, Iweapon
     {
 
         if (!CanShoot) return;
+
+        audioSource.PlayOneShot(shootSound);
 
         float distance = Vector3.Distance(laserPoints[0].position, laserPoints[1].position);
         RaycastHit[] hits = Physics.SphereCastAll(origin, Radius, direction, distance, LayerMask.GetMask("Enemy"));

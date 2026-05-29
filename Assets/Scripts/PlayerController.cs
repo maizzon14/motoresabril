@@ -123,6 +123,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void OnDestroy()
+    {
+        if (input != null)
+        {
+            input.Main.Disable();
+        }
+    }
+
     void Move()
     {
         MousePosition = Mouse.current.position.value;
@@ -163,18 +171,4 @@ public class PlayerController : MonoBehaviour
         Gizmos.color = Color.red;
         if(currentWeapon != null) Gizmos.DrawWireSphere(transform.position, currentWeapon.GetRange());
     }
-    
-    /*void Shoot()
-    {
-        canShoot = false;
-        Debug.Log("Bang");
-        Debug.DrawLine(transform.position, target.Hit.transform.position,
-            Color.yellow, 0.1f);
-        StartCoroutine(ShootCooldown());
-    }*/ 
-    /*IEnumerator ShootCooldown()
-    {
-        yield return new WaitForSeconds(Cooldown);
-        canShoot = true;
-    }*/
 }
